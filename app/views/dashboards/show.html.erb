@@ -21,7 +21,7 @@
               <%= instrument.name %>
             </td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">
-              <%= instrument.hourly_rate(aevo) %>%
+              <%= display_rate_with_color(instrument.hourly_rate(aevo)) %>
             </td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">0.0001%</td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">0.0011%</td>

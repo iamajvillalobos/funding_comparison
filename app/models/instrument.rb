@@ -14,7 +14,7 @@ class Instrument < ApplicationRecord
       funding_rate.rate
     else
       FetchFundingRateJob.perform_later(exchange: exchange, instrument: self)
-      0.0
+      0
     end
   end
 end
