@@ -21,4 +21,14 @@ module NanosecondsConversion
     
     epoch_nanoseconds
   end
+
+  def milliseconds_to_datetime(milliseconds)
+    seconds = milliseconds / 1000.0
+    Time.at(seconds).utc.to_datetime
+  end
+
+  # Convert a DateTime to milliseconds since the Unix epoch
+  def datetime_to_milliseconds(datetime)
+    (datetime.to_time.to_f * 1000).to_i
+  end
 end
