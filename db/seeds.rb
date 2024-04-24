@@ -1,5 +1,6 @@
 Exchange.destroy_all
 Instrument.destroy_all
+FundingRate.destroy_all
 
 Exchange.create(name: "Aevo", api_endpoint: "https://api.aevo.xyz")
 
