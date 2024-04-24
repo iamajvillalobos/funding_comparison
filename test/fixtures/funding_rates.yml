@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exchange: one
+  rate: 9.99
+  expire_at: 2024-04-24 09:38:49
+
+two:
+  exchange: two
+  rate: 9.99
+  expire_at: 2024-04-24 09:38:49
