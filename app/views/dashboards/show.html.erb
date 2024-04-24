@@ -13,21 +13,20 @@
         </tr>
       </thead>
       <tbody class="divide-y divide-neutral-800">
-        <% aevo = Exchange.find_by(name: "Aevo") %>
-        <% hyperliquid = Exchange.find_by(name: "Hyperliquid") %>
-
         <% @instruments.each do |instrument| %>
           <tr>
             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
               <%= instrument.name %>
             </td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">
-              <%= display_rate_with_color(instrument.hourly_rate(aevo)) %>
+              <%= display_rate_with_color(instrument.hourly_rate(@aevo)) %>
             </td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">
-              <%= display_rate_with_color(instrument.hourly_rate(hyperliquid)) %>
+              <%= display_rate_with_color(instrument.hourly_rate(@hyperliquid)) %>
             </td>
-            <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">0.0011%</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">
+              <%= calculate_arb(instrument.hourly_rate(@aevo), instrument.hourly_rate(@hyperliquid)) %>
+            </td>
           </tr>
         <% end %>
       </tbody>
