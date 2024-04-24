@@ -1,9 +1,9 @@
-<div class="mt-16">
+<div class="my-16">
   <h2 class="text-4xl">Funding Comparison</h2>
   <p class="text-base mt-1">Funding rate differences across exchanges</p>
 
-  <div class="mt-8 bg-neutral-800 border border-neutral-700 inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-    <table class="min-w-full divide-y divide-gray-700">
+  <div class="mt-8 bg-neutral-900 border border-neutral-700 inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+    <table class="min-w-full divide-y divide-neutral-700">
       <thead>
         <tr>
           <th class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Instrument</th>
@@ -12,19 +12,21 @@
           <th class="px-3 py-3.5 text-left text-sm font-semibold text-white">Aevo-HL Arb</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-800">
-        <tr>
-          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">BTC</td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0.0013%</td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0.0001%</td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0.0011%</td>
-        </tr>
-        <tr>
-          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">ETH</td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0.0024%</td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0.0015%</td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">0.0011%</td>
-        </tr>
+      <tbody class="divide-y divide-neutral-800">
+        <% @instruments.each do |instrument| %>
+          <% aevo = Exchange.find_by(name: "Aevo") %>
+
+          <tr>
+            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+              <%= instrument.name %>
+            </td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">
+              <%= instrument.hourly_rate(aevo) %>%
+            </td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">0.0001%</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-neutral-100">0.0011%</td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
