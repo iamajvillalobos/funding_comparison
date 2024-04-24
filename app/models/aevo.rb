@@ -3,15 +3,11 @@ class Aevo
   include HTTParty
   base_uri 'api.aevo.xyz'
 
-  FundingRate = Struct.new(:rate, :expire_at)
+  Rate = Struct.new(:rate, :expire_at)
 
   # returns the current funding rate for the instrument
   def funding(instrument)
-    response = self.class.get("/funding", query: { instrument_name: "#{instrument}-PERP"})
-
-    return response["error"] if response["error"]
-
-    FundingRate.new(rate: response["funding_rate"], expire_at: nanoseconds_to_time(response["next_epoch"]))
+    self.class.get("/funding", query: { instrument_name: "#{instrument}-PERP"})
   end
 
   def funding_history(instrument, start_time, end_time, limit = 50)
@@ -30,13 +26,22 @@ class Aevo
     parse_response(response)
   end
 
+  def save_funding_rate(response, exchange, instrument)
+    FundingRate.create!(
+      rate: response["funding_rate"],
+      expire_at: nanoseconds_to_time(response["next_epoch"]),
+      exchange: exchange,
+      instrument: instrument
+    )
+  end
+
   private
 
   def parse_response(response)
     return response if response["funding_history"].empty?
 
     response["funding_history"].map do |sym, time, rate, price|
-      FundingRate.new(rate: rate, expire_at: nanoseconds_to_time(time))
+      Rate.new(rate: rate, expire_at: nanoseconds_to_time(time))
     end
   end
 
