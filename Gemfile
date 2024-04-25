@@ -75,4 +75,4 @@ gem "sidekiq", "~> 7.2"
 
 gem "local_time", "~> 3.0"
 
-gem "clock", "~> 0.2.5", require: false
+gem "ruby-clock", "~> 2.0"
