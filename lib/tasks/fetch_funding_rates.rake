@@ -1,4 +1,4 @@
-namespace :fetch_initial_rates do
+namespace :fetch_funding_rates do
   desc "fetch initial funding rates for each exchange for all instruments"
   task run: :environment do
     Instrument.all.each do |instrument|

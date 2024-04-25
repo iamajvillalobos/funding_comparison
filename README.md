@@ -5,5 +5,5 @@ Dashboard to check funding rate between exchanges and arbitrage opportunities.
 
 ```
 bin/setup
-bin/rails fetch_initial_rates:run
+bin/rails fetch_funding_rates:run
 ```
