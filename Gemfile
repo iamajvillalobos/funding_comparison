@@ -72,3 +72,5 @@ end
 gem "httparty", "~> 0.21.0"
 
 gem "sidekiq", "~> 7.2"
+
+gem "local_time", "~> 3.0"

@@ -1,6 +1,15 @@
 <div class="my-16">
-  <h2 class="text-4xl">Funding Comparison</h2>
-  <p class="text-base mt-1">Funding rate differences across exchanges</p>
+
+  <div class="flex justify-between">
+    <section>
+      <h2 class="text-4xl">Funding Comparison</h2>
+      <p class="text-base mt-1">Funding rate differences across exchanges</p>
+    </section>
+
+    <section class="self-end">
+      <p class="text-xs">Updated as of: <%= local_time(@latest_funding_rate.created_at) %></p>
+    </section>
+  </div>
 
   <div class="mt-8 bg-neutral-900 border border-neutral-700 inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
     <table class="min-w-full divide-y divide-neutral-700">
