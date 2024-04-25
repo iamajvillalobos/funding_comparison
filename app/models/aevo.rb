@@ -9,7 +9,6 @@ class Aevo
   end
 
   def save_funding_rate(response, exchange, instrument)
-    binding.irb
     FundingRate.create!(
       rate: response["funding_rate"],
       expire_at: nanoseconds_to_time(response["next_epoch"]),
