@@ -10,11 +10,6 @@ class Instrument < ApplicationRecord
       created_at: time.beginning_of_hour..time.end_of_hour
     )
 
-    if funding_rate
-      funding_rate.rate
-    else
-      FetchFundingRateJob.perform_later(exchange: exchange, instrument: self)
-      0
-    end
+    funding_rate ? funding_rate.rate : 0
   end
 end
