@@ -2,4 +2,5 @@ using RubyClock::DSL
 
 every('3 minutes') do
   FetchFundingRatesService.run
+  CleanupOldFundingRatesService.run
 end
