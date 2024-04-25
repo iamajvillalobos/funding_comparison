@@ -25,9 +25,11 @@
         </tr>
       </thead>
       <tbody class="divide-y divide-neutral-800">
-        <% @instruments.each do |instrument| %>
-          <% cache instrument do  %>
-            <%= render partial: "instrument", locals: { instrument: instrument, aevo: @aevo, hyperliquid: @hyperliquid } %>
+        <% cache @instruments do %>
+          <% @instruments.each do |instrument| %>
+            <% cache instrument do  %>
+              <%= render partial: "instrument", locals: { instrument: instrument, aevo: @aevo, hyperliquid: @hyperliquid } %>
+            <% end %>
           <% end %>
         <% end %>
       </tbody>
