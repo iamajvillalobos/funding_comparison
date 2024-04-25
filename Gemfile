@@ -74,3 +74,5 @@ gem "httparty", "~> 0.21.0"
 gem "sidekiq", "~> 7.2"
 
 gem "local_time", "~> 3.0"
+
+gem "clock", "~> 0.2.5", require: false
